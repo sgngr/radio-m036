@@ -1510,7 +1510,7 @@ class dialogStationAdd(object):
           
         self.root.bind('<Key>', self.handle_key)  
           
-        p1 = PhotoImage(file='icons/FM-radio-128.png')
+        p1 = PhotoImage(file='icons/radioM036.png')
         self.root.iconphoto(False,p1)  
         self.root.title("Add station")  
         self.root.geometry(geometryDialogSA) 
@@ -1572,7 +1572,7 @@ class dialogStationRemove(object):
           
         self.root.bind('<Key>', self.handle_key)  
           
-        p1 = PhotoImage(file='icons/FM-radio-128.png')
+        p1 = PhotoImage(file='icons/radioM036.png')
         self.root.iconphoto(False,p1)  
         self.root.title("Remove station")    
         self.root.geometry(geometryDialogSR)   
