@@ -1709,36 +1709,36 @@ class Application(ttk.Frame):
         self.buttonFrame['padding']=(0,5,0,5)
         self.buttonFrame.grid(row=1,column=0,sticky=tk.EW)
 
-        self.imgStationPrev=PhotoImage(file='icons/media-skip-backward-symbolic.symbolic.png')
+        self.imgStationPrev=PhotoImage(file='icons/media-skip-backward.png')
         self.buttonFrame.stationPrevLabel=ttk.Label(self.buttonFrame)
         self.buttonFrame.stationPrevLabel['image']=self.imgStationPrev
         self.buttonFrame.stationPrevLabel['padding']=(40,0,5,0)
         self.buttonFrame.stationPrevLabel.bind("<Button-1>", station_prev)        
         self.buttonFrame.stationPrevLabel.grid(row=0,column=0)
 
-        self.imgStationNext=PhotoImage(file='icons/media-skip-forward-symbolic.symbolic.png')
+        self.imgStationNext=PhotoImage(file='icons/media-skip-forward.png')
         self.buttonFrame.stationNextLabel=ttk.Label(self.buttonFrame)
         self.buttonFrame.stationNextLabel['image']=self.imgStationNext
         self.buttonFrame.stationNextLabel['padding']=(5,0,20,0)
         self.buttonFrame.stationNextLabel.bind("<Button-1>", station_next)
         self.buttonFrame.stationNextLabel.grid(row=0,column=1,sticky=tk.E)
 
-        self.imgVolDown=PhotoImage(file='icons/go-down-symbolic.symbolic.png')
+        self.imgVolDown=PhotoImage(file='icons/go-down.png')
         self.buttonFrame.volDownLabel=ttk.Label(self.buttonFrame)
         self.buttonFrame.volDownLabel['image']=self.imgVolDown
         self.buttonFrame.volDownLabel['padding']=(20,0,5,0)
         self.buttonFrame.volDownLabel.bind("<Button-1>", volume_down)
         self.buttonFrame.volDownLabel.grid(row=0,column=2)
 
-        self.imgVolUp=PhotoImage(file='icons/go-up-symbolic.symbolic.png')
+        self.imgVolUp=PhotoImage(file='icons/go-up.png')
         self.buttonFrame.volUpLabel=ttk.Label(self.buttonFrame)
         self.buttonFrame.volUpLabel['image']=self.imgVolUp
         self.buttonFrame.volUpLabel['padding']=(5,0,5,0)
         self.buttonFrame.volUpLabel.bind("<Button-1>", volume_up)
         self.buttonFrame.volUpLabel.grid(row=0,column=3)
 
-        self.imgPause=PhotoImage(file='icons/media-playback-pause-symbolic.symbolic.png')
-        self.imgStart=PhotoImage(file='icons/media-playback-start-symbolic.symbolic.png')
+        self.imgPause=PhotoImage(file='icons/media-playback-pause.png')
+        self.imgStart=PhotoImage(file='icons/media-playback-start.png')
         
         self.buttonFrame.muteUnmuteLabel=ttk.Label(self.buttonFrame)
         self.buttonFrame.muteUnmuteLabel['image']=self.imgPause
@@ -1746,8 +1746,8 @@ class Application(ttk.Frame):
         self.buttonFrame.muteUnmuteLabel.bind("<Button-1>", muteUnmute)
         self.buttonFrame.muteUnmuteLabel.grid(row=0,column=4)
 
-        self.imgGoBottom=PhotoImage(file='icons/go-bottom-symbolic.symbolic.png')
-        self.imgGoTop=PhotoImage(file='icons/go-top-symbolic.symbolic.png')
+        self.imgGoBottom=PhotoImage(file='icons/go-bottom.png')
+        self.imgGoTop=PhotoImage(file='icons/go-top.png')
         
         self.buttonFrame.controlUpDownLabel=ttk.Label(self.buttonFrame)
         self.buttonFrame.controlUpDownLabel['image']=self.imgGoBottom
@@ -1755,7 +1755,7 @@ class Application(ttk.Frame):
         self.buttonFrame.controlUpDownLabel.bind("<Button-1>", controlPanel_upDown)
         self.buttonFrame.controlUpDownLabel.grid(row=0,column=5)
         
-        self.imgShutdown=PhotoImage(file='icons/system-shutdown-symbolic.symbolic.png')
+        self.imgShutdown=PhotoImage(file='icons/system-shutdown.png')
         self.buttonFrame.quitLabel=ttk.Label(self.buttonFrame)
         self.buttonFrame.quitLabel['image']=self.imgShutdown
         self.buttonFrame.quitLabel['padding']=(5,0,15,0)
@@ -1797,26 +1797,26 @@ class Application(ttk.Frame):
         self.controlFrame.stationNextLabel.grid(row=1,column=2,sticky=tk.W)
         self.controlFrame.stationNextLabel['padding']=(0,10,0,0)
                 
-        self.imgStationRemove=PhotoImage(file='icons/list-remove-symbolic.symbolic.png')
+        self.imgStationRemove=PhotoImage(file='icons/list-remove.png')
         self.controlFrame.stationRemoveLabel=ttk.Label(self.controlFrame)
         self.controlFrame.stationRemoveLabel['image']=self.imgStationRemove
         self.controlFrame.stationRemoveLabel.bind("<Button-1>", self.popupDialogStationRemove)
         self.controlFrame.stationRemoveLabel.grid(row=2,column=1)
         self.controlFrame.stationRemoveLabel['padding']=(0,0,0,10)
                 
-        self.imgFreqDown=PhotoImage(file='icons/media-seek-backward-symbolic.symbolic.png')
+        self.imgFreqDown=PhotoImage(file='icons/media-seek-backward.png')
         self.controlFrame.freqDownLabel=ttk.Label(self.controlFrame)
         self.controlFrame.freqDownLabel['image']=self.imgFreqDown
         self.controlFrame.freqDownLabel.bind("<Button-1>", freq_down)
         self.controlFrame.freqDownLabel.grid(row=3,column=0,sticky=tk.E)
 
-        self.imgFreqUp=PhotoImage(file='icons/media-seek-forward-symbolic.symbolic.png')
+        self.imgFreqUp=PhotoImage(file='icons/media-seek-forward.png')
         self.controlFrame.freqUpLabel=ttk.Label(self.controlFrame)
         self.controlFrame.freqUpLabel['image']=self.imgFreqUp
         self.controlFrame.freqUpLabel.bind("<Button-1>", freq_up)
         self.controlFrame.freqUpLabel.grid(row=3,column=2,sticky=tk.W)
 
-        self.imgStationAdd=PhotoImage(file='icons/list-add-symbolic.symbolic.png')
+        self.imgStationAdd=PhotoImage(file='icons/list-add.png')
         self.controlFrame.stationAddLabel=ttk.Label(self.controlFrame)
         self.controlFrame.stationAddLabel['image']=self.imgStationAdd
         self.controlFrame.stationAddLabel['padding']=(0,0,0,10)
