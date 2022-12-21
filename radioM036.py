@@ -254,6 +254,7 @@ def i2c_start():
     ctrl_tx(0x0000,0x00ec)
     ctrl_tx(0x0000,0x00ec)
     ctrl_tx(0x0003,0x0083)
+    
 
 def i2c_bit_tx(b):
     if b :
@@ -275,6 +276,9 @@ def i2c_ack_tx():
     ctrl_tx(0x0000,0x00ec)
     ctrl_tx(0x0000,0x00ec)
     ctrl_tx(0x0003,0x0083)   
+    
+    
+
 
 def i2c_stop_tx():  
     ctrl_tx(0x0003,0x0082)
@@ -646,7 +650,8 @@ MIC_VOL=0x0e            # MX0E MIC Volume
 LINE_IN_VOL=0x10        # MX10 LINE_IN Volume
 CD_VOL=0x12             # MX12 CD Volume
 AUX_VOL=0x16            # MX16 AUX Volume
-RECORD_SELECT=0x1a      # MX1A Record Select
+
+RECORD_SELECT=0x1a      # MX1A Record Select                        #
 RECORD_GAIN=0x1c        # MX1C Record Gain    
 
 
@@ -875,53 +880,29 @@ def init_driver():
     
     ctrl_tx(0x0100,0x0033)
     
-    ctrl_tx(0x0504,0x0010)
-    ctrl_tx(0x0500,0x008b)
-    
-    ctrl_tx(0x0504,0x0010)
-    ctrl_tx(0x0502,0x0008)
-    ctrl_tx(0x0503,0x0088)
-    ctrl_tx(0x0500,0x008c)
-    
-    ctrl_tx(0x0504,0x0012)
-    ctrl_tx(0x0500,0x008b)
-    
-    ctrl_tx(0x0504,0x0012)
-    ctrl_tx(0x0502,0x0008)
-    ctrl_tx(0x0503,0x0008)
-    ctrl_tx(0x0500,0x008c)
-    
-    ctrl_tx(0x0504,0x000e)
-    ctrl_tx(0x0500,0x008b)
-    
-    ctrl_tx(0x0504,0x000e)
-    ctrl_tx(0x0502,0x0008)
-    ctrl_tx(0x0503,0x0000)
-    ctrl_tx(0x0500,0x008c)
-    
-    ctrl_tx(0x0504,0x0016)
-    ctrl_tx(0x0500,0x008b)
-    
-    ctrl_tx(0x0504,0x0016)
-    ctrl_tx(0x0502,0x0008)
-    ctrl_tx(0x0503,0x0008)
-    ctrl_tx(0x0500,0x008c)
-    
-    ctrl_tx(0x0504,0x001a)
-    ctrl_tx(0x0502,0x0001)
-    ctrl_tx(0x0503,0x0001)
-    ctrl_tx(0x0500,0x008c)
-    
-    ctrl_tx(0x0504,0x001c)
-    ctrl_tx(0x0502,0x0000)
-    ctrl_tx(0x0503,0x0000)
-    ctrl_tx(0x0500,0x008c)
+        
+#     mx10=get_MX(LINE_IN_VOL)
+#     
+#     set_MX(CD_VOL,0x8808)
+#     
+#     mx12=get_MX(CD_VOL)
+#     set_MX(CD_VOL,0x0808)
+#     
+#     mx0e=get_MX(MIC_VOL)
+#     set_MX(MIC_VOL,0x0008)
+#     
+#     mx16=get_MX(AUX_VOL)
+#     set_MX(AUX_VOL,0x0808)
+#     
+#     set_MX(RECORD_SELECT,0x0101)
+#     set_MX(RECORD_GAIN,0x0000)
 
 
 ####################################################################################
 
 def init_radio():
     dev.set_interface_altsetting(interface = 0, alternate_setting = 5) 
+    
     ctrl_tx(0x0203,0x00ba)
     ctrl_tx(0x0002,0x00e8)
     ctrl_tx(0x0003,0x0083)
@@ -1096,191 +1077,37 @@ def init_radio():
     ctrl_tx(0x0100,0x00b3)
     ctrl_tx(0x0116,0x0009)
     ctrl_tx(0x0117,0x0001)
+    
+# === Init TEA5767 ============================   
+
+    global tea5767_registers_w
+    tea5767_registers_w=[0,0,0,0,0]
+    tea5767_write()
+
+# === Init ACL655 =============================     
+
+#     mx12=get_MX(CD_VOL)
+#     set_MX(CD_VOL,0x8808)
+#     
+#     mx0e=get_MX(MIC_VOL)
+#     set_MX(MIC_VOL,0x8008)
+#     
+#     mx16=get_MX(AUX_VOL)
+#     set_MX(AUX_VOL,0x0808)
+#     
+#     mx10=get_MX(LINE_IN_VOL)
+#     set_MX(LINE_IN_VOL,0x8808)
+        
+    set_MX(RECORD_SELECT,0x0303)   # AUX_LEFT + AUX_RIGHT
+    
 
 ####################################################################################
 
-def init_freq():
-    ctrl_tx(0x0003,0x0082)
-    ctrl_tx(0x0001,0x0003)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    ctrl_tx(0x0000,0x00ec)
-    ctrl_tx(0x0003,0x0083)
-    # --- Send Byte xxxx ------------------
-    # --- 0x00
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
     
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    #-------------------------------
-    
-    ctrl_tx(0x0003,0x0082)
-    
-    ctrl_tx(0x0001,0x0003)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0000,0x00ec)
-    ctrl_tx(0x0003,0x0083)
-    
-    # --- Send Byte xxxx ------------------
-    # --- 0x00
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    #-------------------------------
-    
-    ctrl_tx(0x0003,0x0082)
-    ctrl_tx(0x0001,0x0003)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    ctrl_tx(0x0000,0x00ec)
-    ctrl_tx(0x0003,0x0083)
-    
-    # --- Send Byte xxxx ------------------
-    # --- 0x00
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    #-------------------------------
-    ctrl_tx(0x0003,0x0082)
-    
-    ctrl_tx(0x0001,0x0003)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0000,0x00ec)
-    
-    ctrl_tx(0x0003,0x0083)
-    
-    ctrl_tx(0x0001,0x0002)
-    ctrl_tx(0x0000,0x00fc)
-    ctrl_tx(0x0001,0x0003)
-    #-------------------------------
-    
-    
-    ctrl_tx(0x0504,0x0012)
-    ctrl_tx(0x0500,0x008b)
-    ctrl_tx(0x0504,0x0012)
-    ctrl_tx(0x0502,0x0008)
-    ctrl_tx(0x0503,0x0088)
-    ctrl_tx(0x0500,0x008c)
-    ctrl_tx(0x0504,0x000e)
-    ctrl_tx(0x0500,0x008b)
-    ctrl_tx(0x0504,0x000e)
-    ctrl_tx(0x0502,0x0008)
-    ctrl_tx(0x0503,0x0080)
-    ctrl_tx(0x0500,0x008c)
-    ctrl_tx(0x0504,0x0016)
-    ctrl_tx(0x0500,0x008b)
-    ctrl_tx(0x0504,0x0016)
-    ctrl_tx(0x0502,0x0008)
-    ctrl_tx(0x0503,0x0008)
-    ctrl_tx(0x0500,0x008c)
-    ctrl_tx(0x0504,0x0010)
-    ctrl_tx(0x0500,0x008b)
-    ctrl_tx(0x0504,0x0010)
-    ctrl_tx(0x0502,0x0008)
-    ctrl_tx(0x0503,0x0088)
-    ctrl_tx(0x0500,0x008c)
-    ctrl_tx(0x0504,0x001a)
-    ctrl_tx(0x0502,0x0003)
-    ctrl_tx(0x0503,0x0003)
-    ctrl_tx(0x0500,0x008c)
-    ctrl_tx(0x0504,0x001c)
-
 #===============================================================================
-
 
 init_driver()
 init_radio()
-init_freq()
-
 
 frequencyMHz=0.0
 frequencyMHz=stations[station].frequency_MHz
@@ -1648,13 +1475,12 @@ class Application(ttk.Frame):
         self['padding']=(5,5,5,5)
         self.grid(sticky=tk.EW)
         self.master.bind('<Key>', self.handle_key)
-        
         self.CreateWidgets()
         
         
     def handle_key(self, event):
         k = event.keysym
-        print("got k: {k}".format(k))
+        # print("Key: {}".format(k))
         if k == 'q' or k == 'Q':
             mute()
             write_playlist(filePlaylist)
