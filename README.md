@@ -13,7 +13,7 @@ The AVerMedia AVerTV USB2.0 Plus is a composite device with three interfaces. Th
     
     *Linux*: 
     
-    For non-root users, a udev rule is necessary to access the device.
+    For non-root users, an udev rule is necessary to access the device.
 
     `SUBSYSTEM=="usb", ATTR{idVendor}=="07ca", ATTR{idProduct}=="0036", MODE="0666"`
     
