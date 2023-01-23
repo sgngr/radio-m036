@@ -1,5 +1,5 @@
 # radioM036
-**A radio app for the AVerMedia AVerTV USB2.0 Plus**
+**A radio app for the AVerMedia AVerTV USB2.0 Plus (USB Id: 07ca:0036)**
 
 ---
 
