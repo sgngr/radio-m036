@@ -1,11 +1,11 @@
 # radioM036
-**A radio app for the AVerMedia AVerTV USB2.0 Plus (USB Id: 07ca:0036)**
+**A radio app for the AVerMedia AVerTV USB2.0 Plus**
 
 ---
 
 ![ScreenShot](http://burabizim.org/radioM036/Screenshot-radioM036.png) 
 
-The AVerMedia AVerTV USB2.0 Plus is a composite device with three interfaces. The device has the following functions: Analog TV, FM radio and image capture. It also has a remote control. Interface 0 is vendor specific and a kernel driver is available only for Windows XP. Interface 1 and 2 are for audio control and audio streaming. Various OS provide an audio driver. Device hardware contains a DC1120-E controller chip. Unfortunately, no documentation is available for this controller chip. To write the radioM036 app USB traffic was sniffed and hacked by using USBPcap and Wireshark for Windows XP.
+The AVerMedia AVerTV USB2.0 Plus (USB Id: 07ca:0036) is a composite device with three interfaces. The device has the following functions: Analog TV, FM radio and image capture. It also has a remote control. Interface 0 is vendor specific and a kernel driver is available only for Windows XP. Interface 1 and 2 are for audio control and audio streaming. Various OS provide an audio driver. Device hardware contains a DC1120-E controller chip. Unfortunately, no documentation is available for this controller chip. To write the radioM036 app USB traffic was sniffed and hacked by using USBPcap and Wireshark for Windows XP.
 
 ## Requirements
 
