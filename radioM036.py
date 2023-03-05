@@ -1437,12 +1437,6 @@ class dialogStationRemove(object):
         
         self.buttonNo = ttk.Button(self.frameStationRemove, text="No", command=self.No)
         self.buttonNo.grid(row=2,column=1, padx=10, sticky=tk.W)
-
-        # Modal window.
-        # Wait for visibility or grab_set doesn't seem to work.
-        self.root.wait_visibility()   # <<< NOTE
-        self.root.grab_set()          # <<< NOTE
-        self.root.transient(parent)   # <<< NOTE
         
         self.parent = parent
 
