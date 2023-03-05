@@ -1368,11 +1368,9 @@ class dialogStationAdd(object):
         self.addButton = ttk.Button(self.frameStationAdd, text="Add", command=self.Add)
         self.addButton.grid(row=2,pady=0, sticky=tk.E+tk.S)
 
-        # Modal window.
-        # Wait for visibility or grab_set doesn't seem to work.
-        self.root.wait_visibility()   # <<< NOTE
-        self.root.grab_set()          # <<< NOTE
-        self.root.transient(parent)   # <<< NOTE
+        self.root.wait_visibility()
+        self.root.grab_set()
+        self.root.transient(parent)
         
         self.parent = parent
 
@@ -1437,6 +1435,10 @@ class dialogStationRemove(object):
         
         self.buttonNo = ttk.Button(self.frameStationRemove, text="No", command=self.No)
         self.buttonNo.grid(row=2,column=1, padx=10, sticky=tk.W)
+        
+        self.root.wait_visibility()
+        self.root.grab_set()
+        self.root.transient(parent)
         
         self.parent = parent
 
