@@ -27,7 +27,7 @@ The AVerMedia AVerTV USB2.0 Plus (USB Id: 07ca:0036) is a composite device with 
     
 - VLC media player
     
-    It is used to capture audio steam. The capture device location is like as:
+    It is used to capture audio stream. The capture device location is like as:
     
     *For Linux*:
     
