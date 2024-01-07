@@ -85,14 +85,14 @@ def write_configuration(file):
     CaptureDevice=ET.SubElement(root,"captureDevice").text="{}".format(captureDevice)
     tree = ET.ElementTree(root)
     tree.write(file,encoding="utf-8", xml_declaration=True)
-    if platform.system() == 'Linux':
+    from shutil import which
+    if which('xml') :
         cmd="xml format {file} > {file}.1".format(file=fileConfiguration)
         print(cmd)
         os.system(cmd)
         cmd="mv {file}.1 {file} ".format(file=fileConfiguration)
         print(cmd)
         os.system(cmd)  
-
 
 captureDevice=""
 fileConfiguration="config.xml"
@@ -167,7 +167,8 @@ def write_playlist(file):
         ET.SubElement(Station,"frequency_MHz").text="{freq:.2f}".format(freq=stations[i].frequency_MHz)
     tree = ET.ElementTree(root)
     tree.write(file,encoding="utf-8", xml_declaration=True)
-    if platform.system() == 'Linux':
+    from shutil import which
+    if which('xml') :
         cmd="xml format {file} > {file}.1".format(file=filePlaylist)
         print(cmd)
         os.system(cmd)
