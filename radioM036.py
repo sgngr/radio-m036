@@ -85,14 +85,15 @@ def write_configuration(file):
     CaptureDevice=ET.SubElement(root,"captureDevice").text="{}".format(captureDevice)
     tree = ET.ElementTree(root)
     tree.write(file,encoding="utf-8", xml_declaration=True)
-    from shutil import which
-    if which('xml') :
-        cmd="xml format {file} > {file}.1".format(file=fileConfiguration)
-        print(cmd)
-        os.system(cmd)
-        cmd="mv {file}.1 {file} ".format(file=fileConfiguration)
-        print(cmd)
-        os.system(cmd)  
+    if platform.system() == 'Linux':
+        from shutil import which
+        if which('xml') :
+            cmd="xml format {file} > {file}.1".format(file=fileConfiguration)
+            print(cmd)
+            os.system(cmd)
+            cmd="mv {file}.1 {file} ".format(file=fileConfiguration)
+            print(cmd)
+            os.system(cmd)  
 
 captureDevice=""
 fileConfiguration="config.xml"
