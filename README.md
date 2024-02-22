@@ -48,3 +48,7 @@ The AVerMedia AVerTV USB2.0 Plus (USB Id: 07ca:0036) is a composite device with 
     - python-vlc
     - pillow
     - pyinstaller (optional, if you want to build an executable)
+ 
+ ## Notes
+
+- For Linux OS, the software is included to the project [tvM036](https://github.com/sgngr/tv-m036).
